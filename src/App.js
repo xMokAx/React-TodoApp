@@ -27,6 +27,33 @@ class App extends React.Component {
           </div>
         )
     }
+
+    componentDidMount() {
+      try {
+        const todos = JSON.parse(localStorage.getItem('todos'))
+        const completed = JSON.parse(localStorage.getItem('completed'))
+        if(todos) {
+            this.setState(() => ({todos}))
+        }
+        if(completed) {
+          this.setState(() => ({completed}))
+        }
+      } catch(e) {
+
+      }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      if (this.state.todos.length !== prevState.todos.length) {
+          const json = JSON.stringify(this.state.todos)
+          localStorage.setItem('todos', json)
+      }
+      if (this.state.completed.length !== prevState.completed.length) {
+        const json = JSON.stringify(this.state.completed)
+        localStorage.setItem('completed', json)
+      }
+    }
+
     handleChange (e) {
     this.setState({text: e.target.value})
     }
