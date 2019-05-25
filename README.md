@@ -1,3 +1,4 @@
-# React-TodoApp
+# react-todo
 Simple todo app using React js.
-https://xmokax.github.io/React-TodoApp/
+
+try it here: https://xmokax.github.io/react-todo/
